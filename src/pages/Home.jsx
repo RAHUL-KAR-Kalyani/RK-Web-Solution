@@ -664,7 +664,7 @@ const Home = () => {
 							<a href="#" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
 								<Github size={20} />
 							</a>
-							<a href="#" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
+							<a href="linkedin.com/in/rahulkar26/" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
 								<Linkedin size={20} />
 							</a>
 							<a href="#" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
