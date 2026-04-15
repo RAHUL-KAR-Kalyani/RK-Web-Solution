@@ -6,25 +6,31 @@ import emailjs from '@emailjs/browser';
 import {
 	Menu, X, Code2, Terminal, MonitorSmartphone, Server, ShieldCheck, Zap,
 	Mail, Phone, MapPin, ChevronRight, Github, Linkedin, Twitter,
-	User, CheckCircle2, Clock, Cpu
+	User, CheckCircle2, Clock, Cpu,
+	ChevronUp
 } from 'lucide-react';
 import { setField, setStatus, resetForm } from '../store/contactSlice';
-import { SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTypescript, SiTailwindcss, SiBootstrap } from 'react-icons/si';
+import { SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTypescript, SiTailwindcss, SiBootstrap, SiGithub } from 'react-icons/si';
 
 import IMT from '../assets/imt.jpg';
 import HRMS from '../assets/hrms.jpg';
 import FinTech from '../assets/FinTech.png';
 import Health from '../assets/health_and_fitness.png';
 import ECommerce from '../assets/e-commerce.png';
+import { FaLinkedin, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
 const Home = () => {
 	const dispatch = useDispatch();
 	const { navScrolled, menuOpen, activeSection } = useSelector((state) => state.ui);
 	const contact = useSelector((state) => state.contact);
+	const [showTop, setShowTop] = React.useState(false);
 
 	useEffect(() => {
 		const handleScroll = () => {
 			dispatch(setNavScrolled(window.scrollY > 50));
+
+			// 👇 Show button after scrolling down
+			setShowTop(window.scrollY > 700);
 
 			const sections = ['home', 'services', 'tech-stack', 'portfolio', 'about', 'why-me', 'contact'];
 			for (const section of sections) {
@@ -41,6 +47,10 @@ const Home = () => {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [dispatch]);
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	};
 
 	const scrollTo = (id) => {
 		const el = document.getElementById(id);
@@ -647,28 +657,48 @@ const Home = () => {
 				</section>
 			</main>
 
+			<AnimatePresence>
+				{showTop && (
+					<motion.button
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: 20 }}
+						onClick={scrollToTop}
+						className="fixed bottom-6 hover:cursor-pointer right-6 z-50 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg hover:bg-primary/90 hover:-translate-y-1 transition-all"
+					>
+						<ChevronUp size={20} />
+					</motion.button>
+				)}
+			</AnimatePresence>
+
 			{/* Footer */}
 			<footer className="border-t border-border/50 pt-16 pb-8 bg-card/30">
 				<div className="container mx-auto px-6 md:px-12">
 					<div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
 						<div className="flex flex-col items-center md:items-start gap-4">
-							<div className="text-3xl font-bold font-mono tracking-tighter flex items-center gap-1 cursor-pointer" onClick={() => scrollTo('home')}>
+							<div className="text-5xl font-bold font-mono tracking-tighter flex items-center gap-1 cursor-pointer" onClick={() => scrollTo('home')}>
 								<span className="text-primary">&lt;</span>
 								<span className="text-foreground">RK</span>
 								<span className="text-primary">/&gt;</span>
 							</div>
-							<p className="text-muted-foreground text-sm font-medium">Crafting digital experiences that matter.</p>
+							<p className="text-muted-foreground text-base font-medium">Crafting digital experiences that matter.</p>
 						</div>
 
 						<div className="flex gap-4">
-							<a href="#" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
-								<Github size={20} />
+							<a href="https://github.com/RAHUL-KAR-Kalyani" target="_blank" rel="noopener noreferrer"
+								className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-border hover:text-black hover:bg-amber-100 hover:-translate-y-1 transition-all shadow-sm ">
+								{/* <Github size={20} /> */}
+								<SiGithub size={30} />
 							</a>
-							<a href="linkedin.com/in/rahulkar26/" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
-								<Linkedin size={20} />
+							<a href="https://www.linkedin.com/in/rahulkar26/" target="_blank" rel="noopener noreferrer"
+								className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-blue-500 hover:bg-blue-500 hover:text-white hover:-translate-y-1 transition-all shadow-sm hover">
+								{/* <Linkedin size={20} /> */}
+								<FaLinkedinIn size={30} />
 							</a>
-							<a href="#" className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary hover:-translate-y-1 transition-all shadow-sm">
-								<Twitter size={20} />
+							<a href="https://twitter.com/rahulkar26" target="_blank" rel="noopener noreferrer"
+								className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-[#1DA1F2] hover:bg-[#FAF9F6] hover:-translate-y-1 transition-all shadow-sm">
+								{/* <Twitter size={20} /> */}
+								<FaTwitter size={30} />
 							</a>
 						</div>
 					</div>
