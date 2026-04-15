@@ -584,6 +584,7 @@ const Home = () => {
 													id="name"
 													required
 													value={contact.name}
+													autoComplete="name"
 													onChange={(e) => dispatch(setField({ field: 'name', value: e.target.value }))}
 													className="bg-background border border-border rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-foreground"
 													placeholder="John Doe"
@@ -596,6 +597,7 @@ const Home = () => {
 													id="email"
 													required
 													value={contact.email}
+													autoComplete="email"
 													onChange={(e) => dispatch(setField({ field: 'email', value: e.target.value }))}
 													className="bg-background border border-border rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-foreground"
 													placeholder="john@example.com"
@@ -609,6 +611,7 @@ const Home = () => {
 												<select
 													id="projectType"
 													value={contact.projectType}
+													autoComplete="on"
 													onChange={(e) => dispatch(setField({ field: 'projectType', value: e.target.value }))}
 													className="w-full bg-background border border-border rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none text-foreground"
 												>
@@ -631,6 +634,7 @@ const Home = () => {
 												required
 												rows={5}
 												value={contact.message}
+												autoComplete="off"
 												onChange={(e) => dispatch(setField({ field: 'message', value: e.target.value }))}
 												className="bg-background border border-border rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none text-foreground"
 												placeholder="Tell me about your project requirements..."
